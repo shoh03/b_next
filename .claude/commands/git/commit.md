@@ -28,10 +28,10 @@ argument-hint: <커밋 메시지 내용>
 ### 2. remote 연결
 
 - remote 이름: `origin`
-- 주소: `https://github.com/shoh03/a_commands.git`
+- 주소: `https://github.com/shoh03/b_next.git`
 
 ```bash
-git remote add origin https://github.com/shoh03/a_commands.git
+git remote add origin https://github.com/shoh03/b_next.git
 ```
 
 ### 3. 커밋
