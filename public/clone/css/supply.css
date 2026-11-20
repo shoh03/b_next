@@ -1,0 +1,405 @@
+/* supply.png 클론 스타일 (정적 화면, 애니메이션/전환 효과 없음) */
+:root {
+    --color-primary: #0f7a66;
+    --color-primary-soft: #e6f7f3;
+    --color-alert-bg: #e8f8f5;
+    --color-dday: #e5484d;
+    --color-text: #111111;
+    --color-sub-text: #6b7280;
+    --color-line: #e5e7eb;
+    --color-footer-bg: #0e1a2e;
+    --color-footer-accent: #3ddcc6;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #ffffff;
+    color: var(--color-text);
+    font-family: "Pretendard", "Malgun Gothic", sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input,
+select {
+    font: inherit;
+    color: inherit;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+img {
+    display: block;
+}
+
+.container {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+/* 헤더 */
+.site-header {
+    height: 96px;
+    background: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.header-inner {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 26px;
+    font-weight: 800;
+    color: #1f3a5f;
+}
+
+.gnb {
+    display: flex;
+    gap: 40px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1f3a5f;
+}
+
+.avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #3ddcc6, #0f5f5a);
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 페이지 헤더 + 검색 */
+.page-head {
+    padding-top: 64px;
+}
+
+.breadcrumb {
+    font-size: 14px;
+    color: var(--color-sub-text);
+}
+
+.page-head h1 {
+    margin-top: 16px;
+    font-size: 44px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+.search-bar {
+    margin-top: 48px;
+    display: flex;
+    align-items: stretch;
+    height: 52px;
+}
+
+.select-box {
+    width: 164px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    border: 1px solid #d1d5db;
+    gap: 8px;
+}
+
+.search-input {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 16px;
+    margin-left: 8px;
+    border: 1px solid #d1d5db;
+}
+
+.search-input input {
+    flex: 1;
+    font-size: 17px;
+    cursor: text;
+    outline: none;
+}
+
+.search-input input::placeholder {
+    color: #9ca3af;
+}
+
+.search-btn {
+    width: 70px;
+    margin-left: 0;
+    background: #111111;
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.divider-strong {
+    margin-top: 28px;
+    border-top: 1px solid #111111;
+}
+
+/* 본문 2단 */
+.content-grid {
+    margin-top: 40px;
+    display: flex;
+    gap: 120px;
+    padding-bottom: 96px;
+}
+
+.side {
+    width: 282px;
+    flex-shrink: 0;
+}
+
+.alert-card {
+    background: var(--color-alert-bg);
+    padding: 28px 24px;
+}
+
+.alert-card h3 {
+    font-size: 19px;
+    font-weight: 700;
+}
+
+.alert-card p {
+    margin-top: 12px;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.alert-card .mail {
+    margin-top: 14px;
+    font-size: 14px;
+    color: var(--color-sub-text);
+}
+
+.alert-btn {
+    margin-top: 20px;
+    width: 100%;
+    height: 44px;
+    background: #111111;
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.bookmark-side {
+    margin-top: 44px;
+}
+
+.bookmark-side h3 {
+    font-size: 19px;
+    font-weight: 700;
+}
+
+.bookmark-side h3 span {
+    color: var(--color-primary);
+    margin-left: 4px;
+}
+
+.bookmark-side p {
+    margin-top: 16px;
+    color: var(--color-sub-text);
+    line-height: 1.7;
+}
+
+.link-more {
+    display: inline-block;
+    margin-top: 16px;
+    color: var(--color-primary);
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+/* 목록 */
+.list {
+    flex: 1;
+}
+
+.list-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #111111;
+}
+
+.list-head h2 {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.list-head span {
+    font-size: 14px;
+    color: var(--color-sub-text);
+}
+
+.item {
+    display: flex;
+    gap: 24px;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--color-line);
+}
+
+.dday {
+    width: 56px;
+    flex-shrink: 0;
+    font-size: 30px;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.dday.urgent {
+    color: var(--color-dday);
+}
+
+.item-body {
+    flex: 1;
+    padding-top: 2px;
+}
+
+.tag {
+    display: inline-block;
+    padding: 3px 10px;
+    background: var(--color-primary-soft);
+    color: var(--color-primary);
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.item-body h3 {
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.45;
+}
+
+.meta {
+    margin-top: 10px;
+    font-size: 15px;
+    color: var(--color-sub-text);
+}
+
+.item-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-top: 12px;
+}
+
+.star {
+    width: 44px;
+    height: 44px;
+    border: 1px solid #d1d5db;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.star.on {
+    border-color: var(--color-primary);
+}
+
+.view-btn {
+    height: 44px;
+    padding: 0 18px;
+    border: 1.5px solid #111111;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.notice {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #9ca3af;
+}
+
+/* 푸터 */
+.site-footer {
+    background: var(--color-footer-bg);
+    color: #cbd5e1;
+    padding: 72px 0 40px;
+}
+
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 56px;
+    border-bottom: 1px solid #1e2b40;
+}
+
+.footer-brand strong {
+    display: block;
+    font-size: 24px;
+    font-weight: 800;
+    color: #ffffff;
+}
+
+.footer-brand p {
+    margin-top: 16px;
+    font-size: 15px;
+}
+
+.footer-cols {
+    display: flex;
+    gap: 96px;
+}
+
+.footer-cols h4 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--color-footer-accent);
+    margin-bottom: 16px;
+}
+
+.footer-cols li {
+    list-style: none;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.footer-big {
+    padding: 56px 0;
+    font-size: 150px;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    color: #334155;
+    line-height: 1;
+}
+
+.footer-big span {
+    color: #0f5f5a;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 24px;
+    border-top: 1px solid #1e2b40;
+    font-size: 13px;
+}

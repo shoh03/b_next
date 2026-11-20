@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>프리미어리그 팀 순위</title>
+    <link rel="stylesheet" href="css/rank.css">
+</head>
+<body>
+    <main class="wrap">
+        <header class="header">
+            <p class="eyebrow">PREMIER LEAGUE</p>
+            <h1>TEAM RANKING</h1>
+            <p class="sub">해외축구 · 프리미어리그 팀 순위 · <b>최근 5경기</b> 흐름 포함</p>
+        </header>
+
+        <div class="table-scroll">
+            <table>
+                <thead>
+                    <tr>
+                        <th>순위</th>
+                        <th class="team-col">팀</th>
+                        <th>승점</th>
+                        <th>경기</th>
+                        <th>승</th>
+                        <th>무</th>
+                        <th>패</th>
+                        <th>득점</th>
+                        <th>실점</th>
+                        <th>득실</th>
+                        <th>최근 5경기</th>
+                    </tr>
+                </thead>
+                <tbody id="rankBody"></tbody>
+            </table>
+        </div>
+
+        <div class="legend">
+            <span><i style="background:var(--win)"></i>승</span>
+            <span><i style="background:var(--draw)"></i>무</span>
+            <span><i style="background:var(--loss)"></i>패</span>
+        </div>
+
+        <p class="footer">데이터: epl_teams.json</p>
+    </main>
+
+    <script>
+        const teams = [
+            { rank: 1, teamName: "아스널", points: 27, matchesPlayed: 10, wins: 9, draws: 0, losses: 1, goalsFor: 15, goalsAgainst: 5, goalDifference: 10, recentFiveMatches: ["승", "승", "승", "승", "승"] },
+            { rank: 2, teamName: "브라이턴", points: 22, matchesPlayed: 10, wins: 7, draws: 1, losses: 2, goalsFor: 26, goalsAgainst: 7, goalDifference: 19, recentFiveMatches: ["승", "승", "패", "승", "승"] },
+            { rank: 3, teamName: "맨시티", points: 21, matchesPlayed: 10, wins: 7, draws: 0, losses: 3, goalsFor: 21, goalsAgainst: 13, goalDifference: 8, recentFiveMatches: ["승", "승", "패", "패", "패"] },
+            { rank: 4, teamName: "리버풀", points: 18, matchesPlayed: 10, wins: 5, draws: 3, losses: 2, goalsFor: 14, goalsAgainst: 10, goalDifference: 4, recentFiveMatches: ["패", "승", "승", "패", "승"] },
+            { rank: 5, teamName: "첼시", points: 16, matchesPlayed: 10, wins: 5, draws: 1, losses: 4, goalsFor: 19, goalsAgainst: 16, goalDifference: 3, recentFiveMatches: ["승", "승", "패", "승", "패"] },
+            { rank: 6, teamName: "에버턴", points: 16, matchesPlayed: 10, wins: 4, draws: 4, losses: 2, goalsFor: 12, goalsAgainst: 10, goalDifference: 2, recentFiveMatches: ["무", "패", "패", "승", "승"] },
+            { rank: 7, teamName: "본머스", points: 15, matchesPlayed: 10, wins: 4, draws: 3, losses: 3, goalsFor: 16, goalsAgainst: 14, goalDifference: 2, recentFiveMatches: ["패", "승", "승", "승", "승"] },
+            { rank: 8, teamName: "브렌트퍼드", points: 14, matchesPlayed: 10, wins: 3, draws: 5, losses: 2, goalsFor: 16, goalsAgainst: 11, goalDifference: 5, recentFiveMatches: ["무", "패", "무", "승", "패"] },
+            { rank: 9, teamName: "리즈", points: 14, matchesPlayed: 10, wins: 3, draws: 5, losses: 2, goalsFor: 10, goalsAgainst: 8, goalDifference: 2, recentFiveMatches: ["패", "무", "무", "패", "승"] },
+            { rank: 10, teamName: "애스턴 빌라", points: 13, matchesPlayed: 10, wins: 3, draws: 4, losses: 3, goalsFor: 14, goalsAgainst: 17, goalDifference: -3, recentFiveMatches: ["무", "승", "승", "무", "무"] },
+            { rank: 11, teamName: "토트넘", points: 12, matchesPlayed: 10, wins: 3, draws: 3, losses: 4, goalsFor: 10, goalsAgainst: 11, goalDifference: -1, recentFiveMatches: ["무", "승", "승", "승", "패"] },
+            { rank: 12, teamName: "뉴캐슬", points: 12, matchesPlayed: 10, wins: 3, draws: 3, losses: 4, goalsFor: 13, goalsAgainst: 16, goalDifference: -3, recentFiveMatches: ["패", "패", "승", "패", "무"] },
+            { rank: 13, teamName: "헐 시티", points: 11, matchesPlayed: 10, wins: 2, draws: 5, losses: 3, goalsFor: 11, goalsAgainst: 11, goalDifference: 0, recentFiveMatches: ["무", "패", "무", "무", "패"] },
+            { rank: 14, teamName: "입스위치", points: 11, matchesPlayed: 10, wins: 3, draws: 2, losses: 5, goalsFor: 15, goalsAgainst: 20, goalDifference: -5, recentFiveMatches: ["승", "패", "무", "무", "패"] },
+            { rank: 15, teamName: "풀럼", points: 10, matchesPlayed: 10, wins: 2, draws: 4, losses: 4, goalsFor: 10, goalsAgainst: 12, goalDifference: -2, recentFiveMatches: ["패", "승", "승", "무", "무"] },
+            { rank: 16, teamName: "노팅엄", points: 9, matchesPlayed: 10, wins: 2, draws: 3, losses: 5, goalsFor: 9, goalsAgainst: 13, goalDifference: -4, recentFiveMatches: ["패", "패", "무", "패", "승"] },
+            { rank: 17, teamName: "코벤트리", points: 9, matchesPlayed: 10, wins: 3, draws: 0, losses: 7, goalsFor: 10, goalsAgainst: 19, goalDifference: -9, recentFiveMatches: ["승", "패", "패", "승", "패"] },
+            { rank: 18, teamName: "맨유", points: 8, matchesPlayed: 10, wins: 1, draws: 5, losses: 4, goalsFor: 14, goalsAgainst: 19, goalDifference: -5, recentFiveMatches: ["무", "무", "패", "패", "무"] },
+            { rank: 19, teamName: "선덜랜드", points: 8, matchesPlayed: 10, wins: 2, draws: 2, losses: 6, goalsFor: 8, goalsAgainst: 17, goalDifference: -9, recentFiveMatches: ["패", "패", "무", "패", "승"] },
+            { rank: 20, teamName: "크리스털", points: 7, matchesPlayed: 10, wins: 2, draws: 1, losses: 7, goalsFor: 10, goalsAgainst: 24, goalDifference: -14, recentFiveMatches: ["승", "패", "패", "패", "패"] }
+        ];
+
+        const RESULT_CLASS = { "승": "win", "무": "draw", "패": "loss" };
+
+        function renderRow(t) {
+            const gdClass = t.goalDifference > 0 ? "pos" : t.goalDifference < 0 ? "neg" : "";
+            const gdText = t.goalDifference > 0 ? "+" + t.goalDifference : String(t.goalDifference);
+            const recent = t.recentFiveMatches.length
+                ? t.recentFiveMatches.map(r => `<span class="${RESULT_CLASS[r]}" title="${r}">${r}</span>`).join("")
+                : "-";
+            return `
+                <tr>
+                    <td class="rank"><span class="badge">${t.rank}</span></td>
+                    <td class="team">${t.teamName}</td>
+                    <td class="points">${t.points}</td>
+                    <td>${t.matchesPlayed}</td>
+                    <td>${t.wins}</td>
+                    <td>${t.draws}</td>
+                    <td>${t.losses}</td>
+                    <td>${t.goalsFor}</td>
+                    <td>${t.goalsAgainst}</td>
+                    <td class="gd ${gdClass}">${gdText}</td>
+                    <td><div class="recent">${recent}</div></td>
+                </tr>`;
+        }
+
+        document.getElementById("rankBody").innerHTML = teams.map(renderRow).join("");
+    </script>
+</body>
+</html>

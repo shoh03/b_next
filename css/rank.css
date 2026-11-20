@@ -1,0 +1,246 @@
+:root {
+    --bg-top: #0b2a5b;
+    --bg-bottom: #050f24;
+    --accent: #d6212b;
+    --navy: #14213d;
+    --row-bg: #ffffff;
+    --row-alt: #f1f4f9;
+    --text: #14213d;
+    --muted: #6b7280;
+    --win: #1f6feb;
+    --draw: #9aa3b2;
+    --loss: #d6212b;
+    --white: #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --row-bg: #132a4d;
+        --row-alt: #0f2340;
+        --text: #e6ecf7;
+        --muted: #9fb0cc;
+        --navy: #e6ecf7;
+    }
+}
+
+:root[data-theme="dark"] {
+    --row-bg: #132a4d;
+    --row-alt: #0f2340;
+    --text: #e6ecf7;
+    --muted: #9fb0cc;
+    --navy: #e6ecf7;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(180deg, var(--bg-top), var(--bg-bottom));
+    color: var(--white);
+    font-family: "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+}
+
+.wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 40px 16px 56px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.header .eyebrow {
+    font-size: 14px;
+    letter-spacing: 2px;
+    opacity: 0.8;
+}
+
+.header h1 {
+    margin: 8px 0 4px;
+    font-size: clamp(36px, 7vw, 64px);
+    font-weight: 900;
+    letter-spacing: 1px;
+    line-height: 1.05;
+}
+
+.header .sub {
+    margin: 10px 0 0;
+    font-size: 14px;
+    opacity: 0.85;
+}
+
+.header .sub b {
+    color: var(--accent);
+    background: var(--white);
+    padding: 1px 6px;
+    border-radius: 3px;
+}
+
+.table-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+table {
+    width: 100%;
+    min-width: 720px;
+    border-collapse: separate;
+    border-spacing: 0 6px;
+    font-size: 15px;
+}
+
+thead th {
+    padding: 6px 8px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--white);
+    text-align: center;
+    opacity: 0.9;
+    white-space: nowrap;
+}
+
+thead th.team-col {
+    text-align: left;
+    padding-left: 16px;
+}
+
+tbody tr {
+    background: var(--row-bg);
+    color: var(--text);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+tbody tr:nth-child(even) {
+    background: var(--row-alt);
+}
+
+tbody tr.cl {
+    border-left: 4px solid var(--accent);
+}
+
+tbody td {
+    padding: 10px 8px;
+    text-align: center;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+}
+
+tbody td:first-child {
+    border-radius: 6px 0 0 6px;
+}
+
+tbody td:last-child {
+    border-radius: 0 6px 6px 0;
+}
+
+td.rank {
+    font-weight: 900;
+    font-size: 17px;
+    width: 56px;
+}
+
+td.rank .badge {
+    display: inline-block;
+    min-width: 34px;
+    padding: 4px 0;
+    border-radius: 4px;
+    background: var(--navy);
+    color: var(--white);
+}
+
+tr.cl td.rank .badge {
+    background: var(--accent);
+}
+
+td.team {
+    text-align: left;
+    font-weight: 700;
+    padding-left: 14px;
+}
+
+td.points {
+    font-weight: 900;
+    color: var(--accent);
+}
+
+td.gd.pos {
+    color: var(--win);
+}
+
+td.gd.neg {
+    color: var(--loss);
+}
+
+.recent {
+    display: inline-flex;
+    gap: 4px;
+}
+
+.recent span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    color: var(--white);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.recent .win {
+    background: var(--win);
+}
+
+.recent .draw {
+    background: var(--draw);
+}
+
+.recent .loss {
+    background: var(--loss);
+}
+
+.legend {
+    display: flex;
+    justify-content: flex-end;
+    gap: 14px;
+    margin-top: 16px;
+    font-size: 13px;
+    opacity: 0.85;
+}
+
+.legend i {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 4px;
+    vertical-align: middle;
+}
+
+.legend .cl-dot {
+    background: var(--accent);
+    border-radius: 2px;
+}
+
+.footer {
+    margin-top: 18px;
+    font-size: 12px;
+    text-align: center;
+    opacity: 0.7;
+}
+
+@media (max-width: 600px) {
+    .wrap {
+        padding: 28px 16px 40px;
+    }
+
+    .legend {
+        justify-content: center;
+    }
+}
